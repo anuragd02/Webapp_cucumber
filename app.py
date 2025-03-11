@@ -2,16 +2,28 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+import gdown
+import os
 
-# Load the trained model
+# Google Drive file ID
+MODEL_FILE_ID = "1TdP0VR0ZpHrLSzi34TIsyDbOUBS74u80"
+MODEL_PATH = "vgg_net16.h5"
+
+# Function to download the model from Google Drive
 @st.cache_resource
-def load_model():
-    model = tf.keras.models.load_model("vgg_net16.h5")  # Updated model name
+def download_and_load_model():
+    if not os.path.exists(MODEL_PATH):  # Download only if the model is not already present
+        url = f"https://drive.google.com/uc?id={MODEL_FILE_ID}"
+        gdown.download(url, MODEL_PATH, quiet=False)
+
+    # Load the model
+    model = tf.keras.models.load_model(MODEL_PATH)
     return model
 
-model = load_model()
+# Load the model
+model = download_and_load_model()
 
-# Define class labels for cucumber classification
+# Define class labels
 CLASS_NAMES = ["Unhealthy", "Healthy"]
 
 st.title("Cucumber Leaf Disease Classification 🍃")
@@ -34,11 +46,6 @@ if uploaded_file is not None:
     confidence = np.max(predictions) * 100
     predicted_class = CLASS_NAMES[np.argmax(predictions)]
 
-    # Classification logic
-    if confidence >= 50:
-        st.write(f"**Prediction:** {predicted_class}")
-        st.write(f"**Confidence:** {confidence:.2f}%")
-    else:
-        other_confidence = 100 - confidence
-        st.write(f"**Prediction:** Healthy")
-        st.write(f"**Confidence:** {other_confidence:.2f}%")
+    # Display results
+    st.write(f"**Prediction:** {predicted_class}")
+    st.write(f"**Confidence:** {confidence:.2f}%")
