@@ -46,6 +46,11 @@ if uploaded_file is not None:
     confidence = np.max(predictions) * 100
     predicted_class = CLASS_NAMES[np.argmax(predictions)]
 
-    # Display results
-    st.write(f"**Prediction:** {predicted_class}")
-    st.write(f"**Confidence:** {confidence:.2f}%")
+    if confidence >= 50:
+        final_prediction = predicted_class
+        st.write(f"**Prediction:** {final_prediction}")
+        st.write(f"**Confidence:** {confidence:.2f}%")
+    else:
+        final_prediction = "Healthy"
+        st.write(f"**Prediction:** {final_prediction}")
+        st.write(f"**Confidence:** {100 - confidence:.2f}%")
