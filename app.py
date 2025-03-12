@@ -54,7 +54,7 @@ with col1:
         predicted_class = CLASS_NAMES[np.argmax(predictions)]
 
         if confidence >= 50:
-            final_prediction = predicted_class
+            final_prediction = predicted_class + ": Powdery Mildew Disease"
             st.write(f"**Prediction:** {final_prediction}")
             st.write(f"**Confidence:** {confidence:.2f}%")
         else:
