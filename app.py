@@ -82,4 +82,6 @@ with col2:
     )
 
 st.markdown("---")
-st.write("Developed by Anurag using Streamlit❤️")
+st.write("Developed by Anurag Dhole")
+st.write("             Dr. Jadesha Mandya")
+st.write("             Dr. Deepak D.")
