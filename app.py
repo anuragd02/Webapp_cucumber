@@ -82,6 +82,23 @@ with col2:
     )
 
 st.markdown("---")
-st.write("Developed by Anurag Dhole")
-st.write("             Dr. Jadesha Mandya")
-st.write("             Dr. Deepak D.")
+st.markdown(
+    """
+    <style>
+    .developed-by {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .person {
+        font-size: 16px;
+        margin-bottom: 2px;
+    }
+    </style>
+    <div class="developed-by">Developed by</div>
+    <div class="person"><b>Anurag Dhole</b> - Researcher at MIT, Manipal</div>
+    <div class="person"><b>Dr. Jadesha G</b> - Professor at GKVK, Karnataka</div>
+    <div class="person"><b>Dr. Deepak D.</b> - Professor at MIT, Manipal</div>
+    """,
+    unsafe_allow_html=True
+)
