@@ -97,7 +97,7 @@ st.markdown(
     </style>
     <div class="developed-by">Developed by</div>
     <div class="person"><b>Anurag Dhole</b> - Researcher at MIT, Manipal</div>
-    <div class="person"><b>Dr. Jadesha G</b> - Professor at GKVK, Bangalore</div>
+    <div class="person"><b>Dr. Jadesha G</b> - Assistant Professor at GKVK, UAS, Bangalore</div>
     <div class="person"><b>Dr. Deepak D.</b> - Professor at MIT, Manipal</div>
     """,
     unsafe_allow_html=True
